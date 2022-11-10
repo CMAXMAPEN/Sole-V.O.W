@@ -5569,10 +5569,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1813450782, guid: dd0046ecacf28154f802fe0df64f24a0, type: 3}
-      propertyPath: m_SleepingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2832826288445752088, guid: dd0046ecacf28154f802fe0df64f24a0, type: 3}
       propertyPath: m_Name
       value: Player
