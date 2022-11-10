@@ -16,13 +16,21 @@ public class Player : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        rBody.freezeRotation = true;
+        // rBody.freezeRotation = true;
     }
     private void FixedUpdate()
     {
         // initial empty state, stay here until finish falling
         if (animator.GetInteger("AnimState") == 0)
             return;
+
+        // print(Input.GetAxisRaw("Horizontal"));
+        if (Input.GetAxisRaw("Horizontal") == 0f)
+        {
+            animator.SetInteger("AnimState", 1);
+            // rBody.velocity = new Vector2(0f, 0f);
+            return;
+        }
 
         float horiz, vert;
 
@@ -37,11 +45,9 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector3(horiz > 0 ? 1 : -1, 1, 1);
             animator.SetInteger("AnimState", 2);
             Vector2 newVelocity = new Vector2(horiz, 0f);
+            // print(horiz);
             rBody.velocity = newVelocity * speed;
-        }
-        else
-        {
-            animator.SetInteger("AnimState", 1);
+            // print(rBody.velocity);
         }
 
         /*
@@ -59,7 +65,12 @@ public class Player : MonoBehaviour
         {
             animator.SetInteger("AnimState", 1);
         }
-        print("Collision Hit");
+        print("Collision Enter");
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        print("Collision Exit");
     }
 
 
