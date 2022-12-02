@@ -29,6 +29,15 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameover || levelCompleted)
+        {
+            // allow a way to quit the game
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+        }
+
         if (levelCompleted)
             return;
 
@@ -49,12 +58,11 @@ public class GameController : MonoBehaviour
             {
                 UpdateTimer(timeLeft);
             }
-            else 
+            else
             {
                 GameOver();
             }
         }
-
     }
 
     void UpdateTimer(float currentTime)
