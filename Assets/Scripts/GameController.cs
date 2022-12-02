@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 
     private int score = 0;
     private bool gameover = false;
+    private bool levelCompleted = false;
     private bool restart = false;
     public float timeLeft;
     public Animator animator;
@@ -28,6 +29,9 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (levelCompleted)
+            return;
+
         // Check if we need to restart
         if (restart)
         {
@@ -79,5 +83,10 @@ public class GameController : MonoBehaviour
         restart = true;
         gameOverTextObj.SetActive(true);
         restartTextObj.SetActive(true);
+    }
+
+    public void SetLevelCompleted()
+    {
+        levelCompleted = true;
     }
 }
