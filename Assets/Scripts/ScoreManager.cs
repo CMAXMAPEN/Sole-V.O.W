@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Score : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
     public int score;
-    public TextMeshProUGUI scoreUI;
+    public TextMeshProUGUI textScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        score = 0;
+        UpdateTextScore();
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreUI.text = $"${score.ToString()}";
+        UpdateTextScore();
+    }
+
+    void UpdateTextScore()
+    {
+        textScore.text = $"${score.ToString()}";
     }
 }
